@@ -1,0 +1,20 @@
+db.playlist.update({"_id": "999999"}, {$set: {"Name": "JohnTron'S playlist"}});
+db.playlist.update({"_id": "999999"}, {$set: {"Name": "Now thats what I call procrastination!"}}); #Run to return to original form
+
+db.playlist.update({ _id: "999999" }, { $addToSet: {"Songs":"100001"} })
+
+db.artist.update({
+  _id: "000001"
+  },
+  {
+    $addToSet:
+    {
+      "Album":{
+        "_id": "200004",
+        "Name": "Ride The Lightning",
+        "Songs": [],
+        "Release": "1984"
+        }
+    }
+  }
+);

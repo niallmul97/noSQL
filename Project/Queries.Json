@@ -1,0 +1,55 @@
+db.songs.aggregate([
+  {
+    $lookup:
+    {
+      from: "genre",
+      localField: "genre_id",
+      foreignField: "_id",
+      as: "Genre"
+    }
+  }
+  ]).pretty()
+
+db.playlist.aggregate([
+    {
+      $lookup:
+      {
+        from: "user",
+        localField: "UserId",
+        foreignField: "_id",
+        as: "User_Info"
+      }
+    }
+    ]).pretty()
+
+db.artist.aggregate([
+  {
+    $lookup:
+    {
+      from: "songs",
+      localField: "Album._id",
+      foreignField: "album_id",
+      as: "Album"
+    }
+  }
+  ]).pretty()
+
+db.playlist.aggregate([
+    {
+      $lookup:
+      {
+        from: "songs",
+        localField: "Songs",
+        foreignField: "_id",
+        as: "Featured"
+      }
+    }
+    ]).pretty()
+
+db.artist.distinct("Album")
+
+db.artist.distinct("Album.Names")
+
+db.songs.find({"genre_id": "000001"}).pretty()
+
+db.songs.find({"album_id": "200002"}).pretty()

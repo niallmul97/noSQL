@@ -1,0 +1,19 @@
+db.playlist.update({ _id: "999999" }, { $pull: {"Songs":"100022"} })
+
+db.artist.update({
+  _id: "000001"
+  },
+  {
+    $pull:
+    {
+      "Album":{
+        "_id": "200004",
+        "Name": "Ride The Lightning",
+        "Songs": [],
+        "Release": "1984"
+        }
+    }
+  }
+);
+
+db.genre.remove({"_id" : "000004"})
